@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>great number game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% load static %}
+    <script src="{% static 'js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Great Number Game!</h1>
+        <p>I am thinking of a number between 1 and 100</p>
+        <p>Take a guess!</p>
+        <div class="square">
+            <!-- <p>{{request.session.random}}</p> -->
+            <p class="message">{{request.session.message}}</p>
+            
+            <!-- <p class="youwin"> {{request.session.guess}}</p> -->
+        </div>
+
+        
+        <form action="/get_number" method="POST">
+            {% csrf_token %}
+            <select id='guess' name="number" id="number"></select>
+        <input type="submit" value="submit"></input>
+        </form>
+        <form action="/reset" class="reset">
+            <input type="submit" value="reset" />
+          </form>
+
+    </div>
+</body>
+</html>

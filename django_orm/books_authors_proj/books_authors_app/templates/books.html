@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+</head>
+<body>
+   
+    <h1>{{this_book.title}}</h1>
+
+    <h2>ID: {{this_book.id}}</h2>
+
+    <h3>Description: {{this_book.desc}}</h3>
+
+    <h4>Authors of this Book</h4>
+    <ul>
+        {% for author in this_book.authors.all %}
+    <li>{{author.first_name}} {{author.last_name}}</li>
+    {% endfor %}
+    </ul>
+
+   
+
+    <form action="/booksaddauthor" method="POST">
+        {% csrf_token %}
+        <h2>Add an Author</h2>
+        <input type="hidden" name=this_book.id value={{this_book.id}}></input>
+        <select name="author.id" id="author.id">
+        {% for author in all_the_authors %}
+        <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+        {% endfor %} 
+    </select>
+        <button input type="submit">Add</button>   
+    </form>   
+
+    <a href="/">go to books page</a>
+    
+    
+    
+</body>
+</html>

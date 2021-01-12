@@ -1,0 +1,47 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Abel', sans-serif;
+}
+
+table {
+    border: 1px solid #2188CC;
+    height: 50px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th{
+    border: 1px solid black;
+    background-color: #2188CC;
+    padding: 10px;
+    color: #D7DBE0;
+    
+}
+
+td {
+    border: 1px solid grey;
+    padding: 5px;
+}
+.top {
+    text-align: center;
+}
+
+
+.bottom {
+    text-align: center;
+    
+   
+}
+
+.topname,.bottominfo {
+    margin:10px;
+    
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}

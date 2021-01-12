@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draft</title>
+</head>
+<body>
+    <h1>Lineup</h1>
+
+    <div class="banner">
+        <h1>Hello, {{current_user.name}}</h1>
+
+
+    <h1>Current Lineup</h1>
+
+
+    <!-- <form action="/game_play" method="POST">
+        {% csrf_token %}
+        <label for="player_1">Player 1:</label>
+        <select name="player1_id" id="player_id">
+            {% for player in all_players %}
+            <option value="{{player.id}}">{{player.name}}</option> 
+            {% endfor %}
+        </select>
+        <label for="player_2">Player 2:</label>
+        <select name="player2_id" id="player_id">
+            {% for player in all_players %}
+                <option value="{{player.id}}">{{player.name}}</option> 
+            {% endfor %}
+        </select>
+        <label for="player_3">Player 3:</label>
+        <select name="player3_id" id="player_id">
+        {% for player in user.roster.players.all %}
+        <option value="{{player.id}}">{{player.name}}</option> 
+    {% endfor %} 
+</select>
+        <input type="submit" value="add to line up" /> 
+    </form> -->
+
+
+
+    <form action="/game_play" method="POST">
+        {% csrf_token %}
+        <input type="checkbox" id="player1_id" name="player1_id" value="{{player.id}}">
+        <label for="player1_id">{{player.name}}</label><br>
+
+        <input type="checkbox" id="player2_id" name="player2_id" value="{{player.id}}">
+        <label for="player2_id">{{player.name}}</label><br>
+
+        <input type="checkbox" id="player3_id" name="player3_id" value="{{player.id}}">
+        <label for="player3_id">{{player.name}}</label><br>
+
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="rightbox">
+    <h2><form action="/logout" method="POST" id="logout">
+        {% csrf_token %}
+    <input type="submit" value="logout" />
+    </form>
+</body>
+</html>

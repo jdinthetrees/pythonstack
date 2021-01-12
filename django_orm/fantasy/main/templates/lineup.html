@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draft</title>
+</head>
+<body>
+    <h1>Lineup</h1>
+
+    <div class="banner">
+        <h1>Hello, {{current_user.name}}</h1>
+
+
+    <h1>Current Lineup</h1>
+
+
+    <form action="/game_play" method="POST">
+        {% csrf_token %}
+        {% for player in roster.players.all %}
+        <input type="checkbox" id="player_id" name="player_id" value="{{player.id}}">
+        <label for="player_id">{{player.name}}</label><br>
+        {% endfor %}
+        <input type="submit" value="add to line up" /> 
+
+    </form>
+
+
+
+    <div class="rightbox">
+    <h2><form action="/logout" method="POST" id="logout">
+        {% csrf_token %}
+    <input type="submit" value="logout" />
+    </form>
+</body>
+</html>

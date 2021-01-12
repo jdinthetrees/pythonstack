@@ -1,0 +1,50 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    
+    padding: 20px;
+}
+
+.rightbox{
+    display: flex;
+    justify-content: space-between;
+    
+    padding: 20px;
+}
+
+.messageentry {
+    
+    background-color: #036EE4;
+    margin: 20px;
+    padding: 15px;
+}
+
+.comment {
+    
+    background-color: #16A4FB;
+    margin: 70px;
+    padding: 20px;
+}
+
+.postedmessage {
+    color: black;
+    
+    background-color: #f1f4f8;
+    margin: 20px;
+    padding: 15px;
+}
+
+.postedcomment {
+    color: black;
+   
+    background-color: #f1f4f8;
+}
+#logout {
+    
+    padding: 20px;
+}

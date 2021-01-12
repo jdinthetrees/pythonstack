@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>results page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper2">
+      <h1>results page</h1>
+      <p>My name is {{name}}.</p>
+      <p>My location is {{location}}.</p>
+      <p>My favorite language is {{language}}</p>
+      <p class="comment">{{message}}</p>
+      <form action="/" class="goback">
+        <input type="submit" value="Go back" />
+      </form>
+    </div>
+  </body>
+</html>

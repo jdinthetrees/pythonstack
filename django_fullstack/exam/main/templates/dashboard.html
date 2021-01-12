@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    
+    <div class="bigbox">
+
+        <div class="leftbox">
+
+    <div class="banner">
+        <h1>Hello, {{current_user.f_name}}</h1>
+
+    <div class="rightbox">
+    <h2><form action="/logout" method="POST" id="logout">
+        {% csrf_token %}
+    <input type="submit" value="logout" />
+    </form>
+    
+    </h2>
+    <a href="/jobs/new">Add job</a>
+    </div>
+
+    </div>
+</div>
+
+    <div class="jobtable">
+    <h1>All Jobs</h1>
+    <table> 
+        <thead>
+            <th>ID</th>
+            <th>Job</th>
+            <th>Location</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for job in all_jobs reversed %}
+        <tr>
+            <td>{{job.id}}</td>
+            <td>{{job.title}}</td>
+            <td>{{job.location}}</td>
+            <td><a href="/jobs/{{job.id}}">View</a></td>
+
+            {% if request.session.user_id == job.uploaded_by.id%}
+            <td><a href="/jobs/edit/{{job.id}}">Edit</a></td>
+            <td><a href="/jobs/destroy/{{job.id}}">Delete</a></td>
+            {% endif %}
+            
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+</div>
+
+
+
+    
+</body>
+</html>

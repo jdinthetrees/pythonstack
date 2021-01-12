@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Edit</title>
+</head>
+<body>
+
+    <h1>Hello, {{current_user.f_name}} Edit a Job</h1>
+    <h2><form action="/logout" method="POST" id="logout">
+        {% csrf_token %}
+    <input type="submit" value="logout" />
+    </form>
+
+
+
+
+        <form action="/jobs/edit/{{this_job.id}}/update" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name=this_job.id value="{{this_job.id}}">
+    
+      
+        <label for="title">Title</label>
+         
+        <input type="text" name="title" id="title" value="{{this_job.title}}"><br> 
+        <label for="location">Location</label>
+        <input type="text" name="location" id="location" value="{{this_job.location}}"><br> 
+        <label for="description">Description</label>
+        <textarea name="description" id="description" rows="4" cols="30" value="{{this_job.location}}">{{this_job.description}}</textarea><br> 
+        <button input type="submit">submit</button> 
+    </form>   
+
+    <a href="/dashboard">back to main</a>
+
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{message}}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    
+</body>
+</html>

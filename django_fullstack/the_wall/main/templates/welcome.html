@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+</head>
+<body>
+    <div class="banner">
+        <h1>The Wall</h1>
+        <div class="rightbox">
+    <h2>Success! Welcome, {{current_user.f_name}} {{current_user.l_name}}!</h2>
+
+    <form action="/logout" method="POST" id="logout">
+        {% csrf_token %}
+      <input type="submit" value="logout" />
+    </form>
+    </div>
+    </div>
+
+    <div class="message">
+        <form action="/message" method="POST">
+            {% csrf_token %}
+            <label for="message">Post A Message</label>
+            <textarea name="message" rows="10" cols="50" placeholder="Type a message"></textarea>
+            <input type="submit" value="post" />
+            </form>
+    </div>
+
+    
+    
+    {% for message in all_messages reversed %}
+    <div class="messageentry">
+    <p>{{message.id}}</p>
+    <p>{{message.created_at}}</p>
+    <p>by {{message.user.f_name}} {{message.user.l_name}}</p>
+    <p class="postedmessage">{{message.message}}</p><br>
+    </div>
+
+    <div class="comment">
+        <form action="/comment" method="POST">
+            {% csrf_token %}
+            <label for="comment">Post A Comment</label>
+            <input type="hidden" name="message_id" value="{{message.id}}"/>
+            <textarea name="comment" rows="4" cols="50" placeholder="Type a comment"></textarea>
+            <input type="submit" value="comment"/>
+        </form>
+            {% for comment in message.comments.all reversed %}  
+            <p>{{comment.created_at}}</p>
+            <p>by {{comment.user.f_name}} {{comment.user.l_name}}</p>  
+            <p class="postedcomment">{{comment.comment}}</p>
+            {% endfor %}
+    
+    </div>
+
+  
+    {% endfor %}
+
+   
+  
+ 
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book edit</title>
+</head>
+<body>
+
+    <div class="banner">
+        <h1>The Wall</h1>
+        <div class="rightbox">
+    <h2>Success! Welcome, {{current_user.f_name}} {{current_user.l_name}}!</h2>
+
+    <form action="/logout" method="POST" id="logout">
+        {% csrf_token %}
+      <input type="submit" value="logout" />
+    </form>
+    </div>
+    </div>
+
+    <h1>Edit Book {{this_book.id}}</h1>
+
+    <form action="/books/{{this_book.id}}/update" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name=this_book.id value="{{this_book.id}}">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="{{this_book.title}}"><br> 
+
+
+        <p>uploaded by {{this_book.uploaded_by.f_name}} {{this_book.uploaded_by.l_name}}</p>
+        <p>added on {{this_book.created_at}} updated at {{this_book.updated_at}}</p>
+
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" value="{{this_book.desc}}"> <br>
+        <button input type="submit">Update</button> 
+    </form>   
+
+
+    
+</body>
+</html>

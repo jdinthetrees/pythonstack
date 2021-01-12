@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View job</title>
+</head>
+<body>
+
+    <h1>Hello, {{current_user.f_name}} these are the job details</h1>
+
+    <h1>Id {{this_job.id}}</h1>
+
+    <h3>job: {{this_job.title}}</h3>
+
+    <h3>job: {{this_job.location}}</h3>
+
+    <h3>Description: {{this_job.description}}</h3>
+
+    <h3>Last updated: {{this_job.created_at}}</h3>
+
+    <td><a href="/jobs/edit/{{this_job.id}}">Edit</a></td>
+
+
+
+    <form action="/jobs/destroy/{{this_job.id}}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name=this_job.id value="{{this_job.id}}">
+        <button input type="submit">Delete</button> 
+    </form>   
+
+    <a href="/dashboard">Go back</a>
+
+
+    
+</body>
+</html>

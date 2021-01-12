@@ -1,0 +1,10 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.bigbox {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}

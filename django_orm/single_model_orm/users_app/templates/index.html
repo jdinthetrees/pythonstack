@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users app</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+    <div class="top">
+    <h1>All Users</h1>
+    <table> 
+        <thead>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+        </thead>
+        <tbody>
+            {% for user in all_the_users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.email_address}}</td>
+                <td>{{user.age}}</td>
+            </tr>
+            
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+<div class="bottom">
+    <h1>add a user:</h1>
+    <form action="/process" method="POST">
+        {% csrf_token %}
+        <div class="topname">
+        <label for="first_name">first name</label>
+        <input type="text" name="first_name" id="first_name">
+        <label for="last_name">last name</label>
+        <input type="text" name="last_name" id="last_name">
+    </div>
+    <div class="bottominfo">
+        <label for="email">email</label>
+        <input type="email" name="email" id="email">
+        <label for="age">age</label>
+        <input type="number" name="age" id="age">
+    </div>
+        <input type="submit" value="submit" />
+          
+
+    </form>
+
+</div>
+    
+</body>
+</html>

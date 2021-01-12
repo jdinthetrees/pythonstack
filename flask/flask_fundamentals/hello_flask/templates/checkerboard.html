@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='checkerboard.css')}}">
+    <title>checkboard assignment</title>
+</head>
+<body>
+    <h1>hello checkerboards</h1>
+
+    <table>
+    
+    {% for i in range(row): %}
+        <tr>
+            {% for j in range(column) %}
+            <td class='color{{ (i+j)%2+1 }}'>
+            {% endfor %}
+            </td>
+        </tr>
+   
+    {% endfor %}
+
+    </table>
+    
+
+</body>
+</html>

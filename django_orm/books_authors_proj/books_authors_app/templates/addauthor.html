@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Authors App</title>
+</head>
+<body>
+
+    <form action="/addauthorprocess" method="POST">
+        {% csrf_token %}
+        <h2>Add a Author</h2>
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name" id="first_name"/><br> 
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name" id="last_name"/><br> 
+        <label for="notes">Notes</label>
+        <input type="text" name="notes" id="notes"/> <br>
+        <button input type="submit">Add</button> 
+    </form>   
+
+    <table> 
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for author in all_the_authors %}
+            <tr>
+                <td>{{author.id}}</td>
+                <td>{{author.first_name}} {{author.last_name}}</td>
+                <td><a href="/authors/{{author.id}}">View</a></td>  
+            </tr>
+            
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/">go to books page</a>
+    
+</body>
+</html>

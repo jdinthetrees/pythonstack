@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>dojo ninjas app</title>
+</head>
+<body>
+    
+    <form action="/process" method="POST">
+        {% csrf_token %}
+        <h2>Add a Dojo</h2>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name"/> 
+        <label for="city">City</label>
+        <input type="text" name="city" id="city"/> 
+        <label for="state">State</label>
+        <input type="text" name="state" id="state"/>  
+        <button input type="submit">Add</button> 
+    </form>    
+    <form action="/process_student" method="POST">
+        {% csrf_token %}
+        <h2>Add a Ninja</h2>
+        <label for="first_name">First</label>
+        <input type="text" name="first_name" id="first_name"/> 
+        <label for="last_name">Last</label>
+        <input type="text" name="last_name" id="last_name"/> 
+
+        <select name="dojo_ID" id="dojo_ID">
+        {% for dojo in all_the_dojos %}
+        <option value="{{dojo.id}}">{{dojo.name}}</option>
+        {% endfor %} 
+    </select>
+        <button input type="submit">Add</button>   
+    </form>   
+    
+    <h2>All the Dojos</h2>
+    {% for dojo in all_the_dojos %}
+        <h3>Ninjas at the {{dojo.name}}</h3>
+        {%for ninja in dojo.ninjas.all %}
+        <li>{{ninja.first_name}} {{ninja.last_name}}</li>
+        {% endfor %}
+    {% endfor %}
+
+</body>
+</html>

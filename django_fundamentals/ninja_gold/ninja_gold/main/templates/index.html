@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ninja gold</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="gold">
+            <p> Your gold: {{request.session.gold}}</p>
+        </div>
+    
+
+    <div class="process">
+        
+        <div class="box1">
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <label for="farm">Farm</label>
+                <input type="hidden" name="location" value="farm"> 
+                <button>Find Gold!</button> 
+            </form>       
+        </div>
+        <div class="box2">
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+           <label for="cave">Cave</label>
+           <input type="hidden" name="location" value="cave">  
+           <button>Find Gold!</button>    
+            </form>       
+        </div>
+        <div class="box3">
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+            <label for="house">House</label>
+            <input type="hidden" name="location" value="house"> 
+            <button>Find Gold!</button>     
+        </form>  
+        </div>
+        <div class="box4">
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+            <label for="casino">Casino</label>
+            <input type="hidden" name="location" value="casino"> 
+            <button>Find Gold!</button>      
+        </form>  
+        </div>
+    </div>
+        </form>
+
+    <div class="activity_log">
+        <p>Activities</p>
+        <p>{{request.session.activity_log}} </p>
+        {% for activity in request.session.activity_log %}
+        <p>{{activity}}</p>
+        {% endfor %}
+    </div>
+
+</div>
+
+    
+</body>
+</html>

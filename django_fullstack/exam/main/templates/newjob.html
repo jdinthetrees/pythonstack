@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Job</title>
+</head>
+<body>
+
+    <h1>Hello, {{current_user.f_name}} Add a Job</h1>
+    <h2><form action="/logout" method="POST" id="logout">
+        {% csrf_token %}
+    <input type="submit" value="logout" />
+    </form>
+
+    <form action="/jobs/create" method="POST">
+        {% csrf_token %}
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title"><br> 
+        <label for="location">Location</label>
+        <input type="text" name="location" id="location"><br> 
+        <label for="description">Description</label>
+        <textarea name="description" id="description" rows="4" cols="30"> </textarea><br>
+        <button input type="submit">submit</button> 
+    </form>   
+
+    <a href="/">back to main</a>
+
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{message}}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    
+</body>
+</html>

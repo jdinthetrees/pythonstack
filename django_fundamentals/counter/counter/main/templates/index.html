@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>counter</title>
+  </head>
+  
+  <body>
+
+  <body>
+    <div class="container">
+      <h1>Counter</h1>
+      <p>{{request.session.counter}}</p>
+
+      <form action="/uptwo" class="uptwo">
+        <input type="submit" value="up two" />
+      </form>
+
+      <form action="/destroy_session" class="destroy">
+        <input type="submit" value="reset" />
+      </form>
+    </div>
+  </body>
+
+</html> 
